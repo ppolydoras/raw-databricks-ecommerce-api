@@ -102,7 +102,7 @@ The template focuses on key e-commerce entities typically found in online retail
 
 ### Entity Relationships
 
-![Class Diagram of E-commerce Entities](ecommerce_entities.png)
+![Class Diagram of E-commerce Entities](databricks_e-commerce.png)
 
 *Alt text: Class diagram showing relationships between Customer, Order, Product, Category, Supplier, and Inventory entities.*
 
