@@ -1,0 +1,19 @@
+raw: "0.10"
+endpoint: GET
+metadata:
+  title: Retrieve Orders with Customer Details
+  description: Retrieves orders along with customer details, supporting filters like customer name, order status, and date range.
+  tags:
+    - orders
+    - customers
+    - retrieval
+code: sql
+codeFile: orders_with_customers.sql
+format: json
+security:
+  public: false
+  scopes:
+    - orders:read
+    - customers:read
+computeClass: normal
+enabled: true

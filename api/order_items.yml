@@ -1,0 +1,17 @@
+raw: "0.10"
+endpoint: GET
+metadata:
+  title: Retrieve Order Items
+  description: Retrieves order items with pagination and supports filters like order ID, product ID, and quantity range.
+  tags:
+    - order_items
+    - retrieval
+code: sql
+codeFile: order_items.sql
+format: json
+security:
+  public: false
+  scopes:
+    - order_items:read
+computeClass: normal
+enabled: true

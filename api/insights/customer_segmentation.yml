@@ -1,0 +1,19 @@
+raw: "0.10"
+endpoint: GET
+metadata:
+  title: Customer Segmentation Based on Purchase History
+  description: Segments customers into high, medium, and low value based on their total spend.
+  tags:
+    - customers
+    - insights
+    - segmentation
+code: sql
+codeFile: insights/customer_segmentation.sql
+format: json
+security:
+  public: false
+  scopes:
+    - customers:read
+    - orders:read
+computeClass: normal
+enabled: true

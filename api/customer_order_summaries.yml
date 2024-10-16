@@ -1,0 +1,19 @@
+raw: "0.10"
+endpoint: GET
+metadata:
+  title: Retrieve Customer Order Summaries
+  description: Provides a summary of orders per customer, including total orders and total amount spent.
+  tags:
+    - customers
+    - orders
+    - summaries
+code: sql
+codeFile: customer_order_summaries.sql
+format: json
+security:
+  public: false
+  scopes:
+    - customers:read
+    - orders:read
+computeClass: normal
+enabled: true

@@ -1,0 +1,20 @@
+raw: "0.10"
+endpoint: GET
+metadata:
+  title: High-Performing Products
+  description: Retrieves products with above-average ratings and high sales.
+  tags:
+    - products
+    - insights
+    - performance
+code: sql
+codeFile: insights/high_performing_products.sql
+format: json
+security:
+  public: false
+  scopes:
+    - products:read
+    - reviews:read
+    - order_items:read
+computeClass: normal
+enabled: true

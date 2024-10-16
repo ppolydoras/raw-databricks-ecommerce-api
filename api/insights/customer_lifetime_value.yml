@@ -1,0 +1,19 @@
+raw: "0.10"
+endpoint: GET
+metadata:
+  title: Customer Lifetime Value Calculation
+  description: Estimates the Customer Lifetime Value (CLV) for customers based on their purchase history.
+  tags:
+    - customers
+    - insights
+    - CLV
+code: sql
+codeFile: insights/customer_lifetime_value.sql
+format: json
+security:
+  public: false
+  scopes:
+    - customers:read
+    - orders:read
+computeClass: normal
+enabled: true

@@ -1,0 +1,17 @@
+raw: "0.10"
+endpoint: GET
+metadata:
+  title: Retrieve Orders
+  description: Retrieves orders with pagination and supports filters like customer ID, order status, and date range.
+  tags:
+    - orders
+    - retrieval
+code: sql
+codeFile: orders.sql
+format: json
+security:
+  public: false
+  scopes:
+    - orders:read
+computeClass: normal
+enabled: true

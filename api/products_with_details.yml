@@ -1,0 +1,21 @@
+raw: "0.10"
+endpoint: GET
+metadata:
+  title: Retrieve Products with Category and Supplier Details
+  description: Retrieves products along with category and supplier details, supporting filters like product name, category name, and supplier name.
+  tags:
+    - products
+    - categories
+    - suppliers
+    - retrieval
+code: sql
+codeFile: products_with_details.sql
+format: json
+security:
+  public: false
+  scopes:
+    - products:read
+    - categories:read
+    - suppliers:read
+computeClass: normal
+enabled: true

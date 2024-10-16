@@ -1,0 +1,17 @@
+raw: "0.10"
+endpoint: GET
+metadata:
+  title: Retrieve Reviews
+  description: Retrieves reviews with pagination and supports filters like product ID, customer ID, rating, and date range.
+  tags:
+    - reviews
+    - retrieval
+code: sql
+codeFile: reviews.sql
+format: json
+security:
+  public: false
+  scopes:
+    - reviews:read
+computeClass: normal
+enabled: true

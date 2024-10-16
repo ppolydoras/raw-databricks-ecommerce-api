@@ -1,0 +1,17 @@
+raw: "0.10"
+endpoint: GET
+metadata:
+  title: Retrieve Inventory Records
+  description: Retrieves inventory records with pagination and supports filters like product ID, quantity in stock, and last updated date.
+  tags:
+    - inventory
+    - retrieval
+code: sql
+codeFile: inventory.sql
+format: json
+security:
+  public: false
+  scopes:
+    - inventory:read
+computeClass: normal
+enabled: true

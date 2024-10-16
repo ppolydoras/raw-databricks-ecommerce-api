@@ -1,0 +1,21 @@
+raw: "0.10"
+endpoint: GET
+metadata:
+  title: Retrieve Reviews with Customer and Product Details
+  description: Retrieves reviews along with customer and product details, supporting filters like product name and customer name.
+  tags:
+    - reviews
+    - customers
+    - products
+    - retrieval
+code: sql
+codeFile: reviews_with_details.sql
+format: json
+security:
+  public: false
+  scopes:
+    - reviews:read
+    - customers:read
+    - products:read
+computeClass: normal
+enabled: true

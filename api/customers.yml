@@ -1,0 +1,17 @@
+raw: "0.10"
+endpoint: GET
+metadata:
+  title: Retrieve Customers
+  description: Retrieves customers with pagination and supports various filters like name, email, and registration date.
+  tags:
+    - customers
+    - retrieval
+code: sql
+codeFile: customers.sql
+format: json
+security:
+  public: false
+  scopes:
+    - customers:read
+computeClass: normal
+enabled: true

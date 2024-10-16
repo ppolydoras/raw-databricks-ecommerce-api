@@ -1,0 +1,19 @@
+raw: "0.10"
+endpoint: GET
+metadata:
+  title: Retrieve Supplier Product Listings
+  description: Retrieves suppliers along with their products, supporting filters like supplier name and product name.
+  tags:
+    - suppliers
+    - products
+    - retrieval
+code: sql
+codeFile: supplier_products.sql
+format: json
+security:
+  public: false
+  scopes:
+    - suppliers:read
+    - products:read
+computeClass: normal
+enabled: true

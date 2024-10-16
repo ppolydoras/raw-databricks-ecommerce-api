@@ -1,0 +1,17 @@
+raw: "0.10"
+endpoint: GET
+metadata:
+  title: Retrieve Suppliers
+  description: Retrieves suppliers with pagination and supports filters like supplier name and contact information.
+  tags:
+    - suppliers
+    - retrieval
+code: sql
+codeFile: suppliers.sql
+format: json
+security:
+  public: false
+  scopes:
+    - suppliers:read
+computeClass: normal
+enabled: true

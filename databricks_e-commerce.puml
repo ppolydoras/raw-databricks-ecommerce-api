@@ -1,0 +1,105 @@
+@startuml
+
+' Define classes and their attributes
+
+class Customer {
+    +customer_id : integer
+    +first_name : string
+    +last_name : string
+    +email : string
+    +phone : string
+    +address : string
+    +city : string
+    +state : string
+    +zip_code : string
+    +registration_date : date
+}
+
+class Product {
+    +product_id : integer
+    +product_name : string
+    +category_id : integer
+    +supplier_id : integer
+    +price : decimal
+    +description : string
+}
+
+class Category {
+    +category_id : integer
+    +category_name : string
+    +description : string
+}
+
+class Supplier {
+    +supplier_id : integer
+    +supplier_name : string
+    +contact_name : string
+    +contact_email : string
+    +phone : string
+    +address : string
+}
+
+class Order {
+    +order_id : integer
+    +customer_id : integer
+    +order_date : date
+    +status : string
+    +total_amount : decimal
+}
+
+class OrderItem {
+    +order_item_id : integer
+    +order_id : integer
+    +product_id : integer
+    +quantity : integer
+    +unit_price : decimal
+}
+
+class Review {
+    +review_id : integer
+    +product_id : integer
+    +customer_id : integer
+    +rating : integer
+    +review_text : string
+    +review_date : date
+}
+
+class Inventory {
+    +inventory_id : integer
+    +product_id : integer
+    +quantity_in_stock : integer
+    +last_updated : date
+}
+
+' Define relationships between classes
+
+Customer "1" -- "0..*" Order : places
+Order "1" -- "0..*" OrderItem : contains
+OrderItem "*" -- "1" Product : includes
+Product "1" -- "0..*" Review : receives
+Customer "1" -- "0..*" Review : writes
+Product "1" -- "1" Inventory : has
+Product "*" -- "1" Category : belongs_to
+Product "*" -- "1" Supplier : supplied_by
+
+' Optionally, you can define summary classes if needed
+
+class CustomerOrderSummary {
+    +customer_id : integer
+    +total_orders : integer
+    +total_spent : decimal
+}
+
+class ProductSalesSummary {
+    +product_id : integer
+    +total_quantity_sold : integer
+    +total_sales_amount : decimal
+}
+
+' Indicate inheritance if summaries extend another class
+
+' CustomerOrderSummary <|-- Customer
+' ProductSalesSummary <|-- Product
+
+@enduml
+ 

@@ -1,0 +1,21 @@
+raw: "0.10"
+endpoint: GET
+metadata:
+  title: Retrieve Order Items with Details
+  description: Retrieves order items along with product and order details, supporting filters like product name and order date.
+  tags:
+    - order_items
+    - products
+    - orders
+    - retrieval
+code: sql
+codeFile: order_items_with_details.sql
+format: json
+security:
+  public: false
+  scopes:
+    - order_items:read
+    - products:read
+    - orders:read
+computeClass: normal
+enabled: true

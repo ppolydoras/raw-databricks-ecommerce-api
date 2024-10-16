@@ -1,0 +1,19 @@
+raw: "0.10"
+endpoint: GET
+metadata:
+  title: Customers Ranked by Total Spend
+  description: Provides a ranking of customers based on total spend within a specified date range.
+  tags:
+    - customers
+    - insights
+    - ranking
+code: sql
+codeFile: insights/customers_ranked_by_spend.sql
+format: json
+security:
+  public: false
+  scopes:
+    - customers:read
+    - orders:read
+computeClass: normal
+enabled: true

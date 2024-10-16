@@ -1,0 +1,17 @@
+raw: "0.10"
+endpoint: GET
+metadata:
+  title: Retrieve Products
+  description: Retrieves products with pagination and supports various filters like product name, category, supplier, and price range.
+  tags:
+    - products
+    - retrieval
+code: sql
+codeFile: products.sql
+format: json
+security:
+  public: false
+  scopes:
+    - products:read
+computeClass: normal
+enabled: true

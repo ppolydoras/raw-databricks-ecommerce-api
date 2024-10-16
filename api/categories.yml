@@ -1,0 +1,17 @@
+raw: "0.10"
+endpoint: GET
+metadata:
+  title: Retrieve Categories
+  description: Retrieves categories with pagination and supports filters like category name and description.
+  tags:
+    - categories
+    - retrieval
+code: sql
+codeFile: categories.sql
+format: json
+security:
+  public: false
+  scopes:
+    - categories:read
+computeClass: normal
+enabled: true

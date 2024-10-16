@@ -1,0 +1,20 @@
+raw: "0.10"
+endpoint: GET
+metadata:
+  title: Retrieve Product Sales Summaries
+  description: Provides a summary of sales per product, including total quantity sold and total sales amount.
+  tags:
+    - products
+    - sales
+    - summaries
+code: sql
+codeFile: product_sales_summaries.sql
+format: json
+security:
+  public: false
+  scopes:
+    - products:read
+    - orders:read
+    - order_items:read
+computeClass: normal
+enabled: true
