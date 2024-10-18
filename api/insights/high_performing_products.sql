@@ -30,8 +30,8 @@ average_values AS (
     SELECT
         AVG(pr.average_rating) AS avg_rating,
         AVG(ps.total_sales) AS avg_sales
-    FROM databricks.product_ratings pr
-    JOIN databricks.product_sales ps ON pr.product_id = ps.product_id
+    FROM product_ratings pr
+    JOIN product_sales ps ON pr.product_id = ps.product_id
 ),
 high_performing_products AS (
     SELECT

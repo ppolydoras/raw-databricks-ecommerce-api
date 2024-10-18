@@ -55,7 +55,7 @@ depletion_estimation AS (
         END AS estimated_days_until_depletion
     FROM average_daily_sales al
     JOIN inventory_levels il ON al.product_id = il.product_id
-    JOIN products p ON al.product_id = p.product_id
+    JOIN databricks.products p ON al.product_id = p.product_id
     WHERE (p.product_name ILIKE CONCAT('%', :product_name, '%') OR :product_name IS NULL)
 )
 SELECT *

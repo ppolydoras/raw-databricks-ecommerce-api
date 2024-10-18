@@ -36,7 +36,7 @@ spending_stats AS (
     SELECT
         AVG(total_spent) AS avg_spent,
         STDDEV(total_spent) AS stddev_spent
-    FROM databricks.customer_totals
+    FROM customer_totals
 ),
 segmented_customers AS (
     SELECT
