@@ -41,8 +41,8 @@ customer_clv AS (
         co.customer_first_name,
         co.customer_last_name,
         AVG(co.order_total_amount) AS average_order_value,
-        COUNT(DISTINCT co.order_order_date) / NULLIF(DATE_PART('year', MAX(co.order_order_date) - MIN(co.order_order_date)) + 1, 0) AS purchase_frequency_per_year,
-        (AVG(co.order_total_amount) * (COUNT(co.order_order_date) / NULLIF(DATE_PART('year', MAX(co.order_order_date) - MIN(co.order_order_date)) + 1, 0))) AS customer_lifetime_value
+        COUNT(DISTINCT co.order_order_date) / NULLIF(((MAX(co.order_order_date) - MIN(co.order_order_date)) / 365.25) + 1, 0) AS purchase_frequency_per_year,
+        (AVG(co.order_total_amount) * (COUNT(co.order_order_date) / NULLIF(((MAX(co.order_order_date) - MIN(co.order_order_date)) / 365.25) + 1, 0))) AS customer_lifetime_value
     FROM customer_orders co
     GROUP BY co.customer_customer_id, co.customer_first_name, co.customer_last_name
 )
