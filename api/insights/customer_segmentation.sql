@@ -49,8 +49,8 @@ segmented_customers AS (
             WHEN ct.total_spent BETWEEN (ss.avg_spent - ss.stddev_spent) AND (ss.avg_spent + ss.stddev_spent) THEN 'medium_value'
             ELSE 'low_value'
         END AS customer_segment
-    FROM databricks.customer_totals ct
-    CROSS JOIN databricks.spending_stats ss
+    FROM customer_totals ct
+    CROSS JOIN spending_stats ss
 )
 SELECT *
 FROM segmented_customers

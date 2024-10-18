@@ -40,8 +40,8 @@ high_performing_products AS (
         pr.average_rating AS product_average_rating,
         ps.total_sales AS product_total_sales
     FROM databricks.products p
-    JOIN databricks.product_ratings pr ON p.product_id = pr.product_id
-    JOIN databricks.product_sales ps ON p.product_id = ps.product_id
+    JOIN product_ratings pr ON p.product_id = pr.product_id
+    JOIN product_sales ps ON p.product_id = ps.product_id
     WHERE pr.average_rating >= COALESCE(:min_average_rating, (SELECT avg_rating FROM databricks.average_values))
       AND ps.total_sales >= COALESCE(:min_total_sales, (SELECT avg_sales FROM databricks.average_values))
       AND (p.product_name ILIKE CONCAT('%', :product_name, '%') OR :product_name IS NULL)

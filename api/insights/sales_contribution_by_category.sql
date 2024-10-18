@@ -18,7 +18,7 @@ WITH category_sales AS (
 total_sales AS (
     SELECT
         SUM(category_total_sales) AS total_sales_amount
-    FROM databricks.category_sales
+    FROM category_sales
 )
 SELECT
     cs.category_category_id,

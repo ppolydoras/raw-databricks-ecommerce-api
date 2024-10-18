@@ -43,7 +43,7 @@ customer_clv AS (
         AVG(co.order_total_amount) AS average_order_value,
         COUNT(DISTINCT co.order_order_date) / NULLIF(DATE_PART('year', MAX(co.order_order_date) - MIN(co.order_order_date)) + 1, 0) AS purchase_frequency_per_year,
         (AVG(co.order_total_amount) * (COUNT(co.order_order_date) / NULLIF(DATE_PART('year', MAX(co.order_order_date) - MIN(co.order_order_date)) + 1, 0))) AS customer_lifetime_value
-    FROM databricks.customer_orders co
+    FROM customer_orders co
     GROUP BY co.customer_customer_id, co.customer_first_name, co.customer_last_name
 )
 SELECT

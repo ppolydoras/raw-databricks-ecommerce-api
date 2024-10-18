@@ -32,7 +32,7 @@ average_daily_sales AS (
     SELECT
         sd.product_id,
         sd.total_quantity_sold / NULLIF(sd.sales_days, 0) AS avg_daily_sales
-    FROM databricks.sales_data sd
+    FROM sales_data sd
 ),
 inventory_levels AS (
     SELECT

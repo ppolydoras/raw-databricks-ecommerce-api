@@ -27,7 +27,7 @@ growth_calculation AS (
                 ((ys.sales_total_amount - LAG(ys.sales_total_amount) OVER (ORDER BY ys.sales_year)) / LAG(ys.sales_total_amount) OVER (ORDER BY ys.sales_year)) * 100
             ELSE NULL
         END AS sales_growth_percentage
-    FROM databricks.yearly_sales ys
+    FROM yearly_sales ys
 )
 SELECT *
 FROM growth_calculation
