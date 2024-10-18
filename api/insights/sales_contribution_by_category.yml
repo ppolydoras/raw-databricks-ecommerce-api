@@ -8,7 +8,7 @@ metadata:
     - categories
     - insights
 code: sql
-codeFile: insights/sales_contribution_by_category.sql
+codeFile: sales_contribution_by_category.sql
 format: json
 security:
   public: false

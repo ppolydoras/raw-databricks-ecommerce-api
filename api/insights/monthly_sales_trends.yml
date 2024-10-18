@@ -8,7 +8,7 @@ metadata:
     - insights
     - trends
 code: sql
-codeFile: insights/monthly_sales_trends.sql
+codeFile: monthly_sales_trends.sql
 format: json
 security:
   public: false

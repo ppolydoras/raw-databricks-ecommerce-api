@@ -8,7 +8,7 @@ metadata:
     - insights
     - ranking
 code: sql
-codeFile: insights/customers_ranked_by_spend.sql
+codeFile: customers_ranked_by_spend.sql
 format: json
 security:
   public: false

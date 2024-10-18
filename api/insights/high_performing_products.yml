@@ -8,7 +8,7 @@ metadata:
     - insights
     - performance
 code: sql
-codeFile: insights/high_performing_products.sql
+codeFile: high_performing_products.sql
 format: json
 security:
   public: false

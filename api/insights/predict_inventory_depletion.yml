@@ -8,7 +8,7 @@ metadata:
     - insights
     - prediction
 code: sql
-codeFile: insights/predict_inventory_depletion.sql
+codeFile: predict_inventory_depletion.sql
 format: json
 security:
   public: false

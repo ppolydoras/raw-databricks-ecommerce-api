@@ -8,7 +8,7 @@ metadata:
     - insights
     - growth
 code: sql
-codeFile: insights/year_over_year_sales_growth.sql
+codeFile: year_over_year_sales_growth.sql
 format: json
 security:
   public: false

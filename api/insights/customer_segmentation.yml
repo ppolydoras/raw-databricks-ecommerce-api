@@ -8,7 +8,7 @@ metadata:
     - insights
     - segmentation
 code: sql
-codeFile: insights/customer_segmentation.sql
+codeFile: customer_segmentation.sql
 format: json
 security:
   public: false
