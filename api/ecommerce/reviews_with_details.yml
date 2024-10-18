@@ -19,5 +19,6 @@ security:
     - reviews:read
     - customers:read
     - products:read
+    - databricks:admin
 computeClass: normal
 enabled: true

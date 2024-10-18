@@ -18,5 +18,6 @@ security:
     - inventory:read
     - products:read
     - categories:read
+    - databricks:admin
 computeClass: normal
 enabled: true

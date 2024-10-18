@@ -15,5 +15,6 @@ security:
   public: false
   scopes:
     - order_items:read
+    - databricks:admin
 computeClass: normal
 enabled: true

@@ -19,5 +19,6 @@ security:
     - products:read
     - categories:read
     - suppliers:read
+    - databricks:admin
 computeClass: normal
 enabled: true

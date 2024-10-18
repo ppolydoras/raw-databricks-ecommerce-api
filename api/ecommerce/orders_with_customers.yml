@@ -17,5 +17,6 @@ security:
   scopes:
     - orders:read
     - customers:read
+    - databricks:admin
 computeClass: normal
 enabled: true

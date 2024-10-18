@@ -15,5 +15,6 @@ security:
   public: false
   scopes:
     - products:read
+    - databricks:admin
 computeClass: normal
 enabled: true
