@@ -6,6 +6,8 @@ metadata:
   tags:
     - inventory
     - retrieval
+    - databricks
+    - ecommerce
 code: sql
 codeFile: inventory.sql
 format: json

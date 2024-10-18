@@ -6,6 +6,8 @@ metadata:
   tags:
     - products
     - retrieval
+    - databricks
+    - ecommerce
 code: sql
 codeFile: products.sql
 format: json

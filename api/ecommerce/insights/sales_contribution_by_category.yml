@@ -7,6 +7,8 @@ metadata:
     - sales
     - categories
     - insights
+    - databricks
+    - ecommerce
 code: sql
 codeFile: sales_contribution_by_category.sql
 format: json

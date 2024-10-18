@@ -7,6 +7,8 @@ metadata:
     - inventory
     - products
     - retrieval
+    - databricks
+    - ecommerce
 code: sql
 codeFile: inventory_with_details.sql
 format: json

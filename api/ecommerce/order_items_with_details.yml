@@ -8,6 +8,8 @@ metadata:
     - products
     - orders
     - retrieval
+    - databricks
+    - ecommerce
 code: sql
 codeFile: order_items_with_details.sql
 format: json

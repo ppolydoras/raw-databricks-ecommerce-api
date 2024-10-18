@@ -6,6 +6,8 @@ metadata:
   tags:
     - order_items
     - retrieval
+    - databricks
+    - ecommerce
 code: sql
 codeFile: order_items.sql
 format: json

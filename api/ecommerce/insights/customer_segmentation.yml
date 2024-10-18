@@ -7,6 +7,8 @@ metadata:
     - customers
     - insights
     - segmentation
+    - databricks
+    - ecommerce
 code: sql
 codeFile: customer_segmentation.sql
 format: json

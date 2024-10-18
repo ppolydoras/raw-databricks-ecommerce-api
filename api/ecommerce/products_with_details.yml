@@ -8,6 +8,8 @@ metadata:
     - categories
     - suppliers
     - retrieval
+    - databricks
+    - ecommerce
 code: sql
 codeFile: products_with_details.sql
 format: json

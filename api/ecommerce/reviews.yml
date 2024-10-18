@@ -6,6 +6,8 @@ metadata:
   tags:
     - reviews
     - retrieval
+    - databricks
+    - ecommerce
 code: sql
 codeFile: reviews.sql
 format: json

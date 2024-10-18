@@ -7,6 +7,8 @@ metadata:
     - suppliers
     - products
     - retrieval
+    - databricks
+    - ecommerce
 code: sql
 codeFile: supplier_products.sql
 format: json

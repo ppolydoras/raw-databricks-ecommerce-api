@@ -6,6 +6,8 @@ metadata:
   tags:
     - suppliers
     - retrieval
+    - databricks
+    - ecommerce
 code: sql
 codeFile: suppliers.sql
 format: json

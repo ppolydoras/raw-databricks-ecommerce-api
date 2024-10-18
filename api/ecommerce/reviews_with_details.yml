@@ -8,6 +8,8 @@ metadata:
     - customers
     - products
     - retrieval
+    - databricks
+    - ecommerce
 code: sql
 codeFile: reviews_with_details.sql
 format: json
