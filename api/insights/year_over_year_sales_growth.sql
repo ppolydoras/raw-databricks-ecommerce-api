@@ -30,5 +30,5 @@ growth_calculation AS (
     FROM databricks.yearly_sales ys
 )
 SELECT *
-FROM databricks.growth_calculation
+FROM growth_calculation
 ORDER BY sales_sales_year;

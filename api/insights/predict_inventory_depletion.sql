@@ -53,11 +53,11 @@ depletion_estimation AS (
             WHEN al.avg_daily_sales > 0 THEN il.quantity_in_stock / al.avg_daily_sales
             ELSE NULL
         END AS estimated_days_until_depletion
-    FROM databricks.average_daily_sales al
-    JOIN databricks.inventory_levels il ON al.product_id = il.product_id
-    JOIN databricks.products p ON al.product_id = p.product_id
+    FROM average_daily_sales al
+    JOIN inventory_levels il ON al.product_id = il.product_id
+    JOIN products p ON al.product_id = p.product_id
     WHERE (p.product_name ILIKE CONCAT('%', :product_name, '%') OR :product_name IS NULL)
 )
 SELECT *
-FROM databricks.depletion_estimation
+FROM depletion_estimation
 ORDER BY estimated_days_until_depletion;

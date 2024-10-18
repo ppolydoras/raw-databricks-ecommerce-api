@@ -37,5 +37,5 @@ WITH customer_order_summaries AS (
     GROUP BY c.customer_id, c.first_name, c.last_name
 )
 SELECT *
-FROM databricks.customer_order_summaries
+FROM customer_order_summaries
 ORDER BY customer_total_spent DESC;

@@ -56,6 +56,6 @@ SELECT
     customer_email,
     customer_total_spent,
     RANK() OVER (ORDER BY customer_total_spent DESC) AS customer_rank
-FROM databricks.customer_totals
+FROM customer_totals
 ORDER BY customer_rank
 LIMIT COALESCE(:page_size, 25) OFFSET (COALESCE(:page, 1) - 1) * COALESCE(:page_size, 25);

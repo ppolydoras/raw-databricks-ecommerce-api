@@ -49,6 +49,6 @@ WITH filtered_suppliers AS (
       AND (address ILIKE CONCAT('%', :supplier_address, '%') OR :supplier_address IS NULL)
 )
 SELECT *
-FROM databricks.filtered_suppliers
+FROM filtered_suppliers
 ORDER BY supplier_supplier_id
 LIMIT COALESCE(:page_size, 25) OFFSET (COALESCE(:page, 1) - 1) * COALESCE(:page_size, 25);

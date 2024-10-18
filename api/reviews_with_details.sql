@@ -64,6 +64,6 @@ WITH reviews_with_details AS (
       AND (r.review_date <= :review_date_range_end OR :review_date_range_end IS NULL)
 )
 SELECT *
-FROM databricks.reviews_with_details
+FROM reviews_with_details
 ORDER BY review_review_id
 LIMIT COALESCE(:page_size, 25) OFFSET (COALESCE(:page, 1) - 1) * COALESCE(:page_size, 25);

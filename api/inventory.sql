@@ -47,6 +47,6 @@ WITH filtered_inventory AS (
       AND (last_updated <= :inventory_last_updated_range_end OR :inventory_last_updated_range_end IS NULL)
 )
 SELECT *
-FROM databricks.filtered_inventory
+FROM filtered_inventory
 ORDER BY inventory_inventory_id
 LIMIT COALESCE(:page_size, 25) OFFSET (COALESCE(:page, 1) - 1) * COALESCE(:page_size, 25);

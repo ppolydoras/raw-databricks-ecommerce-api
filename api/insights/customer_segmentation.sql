@@ -53,7 +53,7 @@ segmented_customers AS (
     CROSS JOIN databricks.spending_stats ss
 )
 SELECT *
-FROM databricks.segmented_customers
+FROM segmented_customers
 WHERE (customer_segment = :segment_type OR :segment_type IS NULL)
 ORDER BY customer_total_spent DESC
 LIMIT COALESCE(:page_size, 25) OFFSET (COALESCE(:page, 1) - 1) * COALESCE(:page_size, 25);

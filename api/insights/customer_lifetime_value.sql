@@ -53,5 +53,5 @@ SELECT
     average_order_value,
     purchase_frequency_per_year,
     customer_lifetime_value
-FROM databricks.customer_clv
+FROM customer_clv
 ORDER BY customer_lifetime_value DESC;

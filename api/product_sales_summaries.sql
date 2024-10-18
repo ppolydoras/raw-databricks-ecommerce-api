@@ -39,5 +39,5 @@ WITH product_sales_summaries AS (
     GROUP BY p.product_id, p.product_name, c.category_name
 )
 SELECT *
-FROM databricks.product_sales_summaries
+FROM product_sales_summaries
 ORDER BY product_total_sales_amount DESC;

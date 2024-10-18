@@ -47,5 +47,5 @@ high_performing_products AS (
       AND (p.product_name ILIKE CONCAT('%', :product_name, '%') OR :product_name IS NULL)
 )
 SELECT *
-FROM databricks.high_performing_products
+FROM high_performing_products
 ORDER BY product_total_sales DESC;

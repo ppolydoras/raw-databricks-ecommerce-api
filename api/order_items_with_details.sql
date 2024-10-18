@@ -57,6 +57,6 @@ WITH order_items_with_details AS (
       AND (o.status ILIKE :order_status OR :order_status IS NULL)
 )
 SELECT *
-FROM databricks.order_items_with_details
+FROM order_items_with_details
 ORDER BY order_item_order_item_id
 LIMIT COALESCE(:page_size, 25) OFFSET (COALESCE(:page, 1) - 1) * COALESCE(:page_size, 25);

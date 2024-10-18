@@ -78,7 +78,7 @@ WITH filtered_customers AS (
       AND (registration_date <= :customer_registration_date_range_end OR :customer_registration_date_range_end IS NULL)
 )
 SELECT *
-FROM databricks.filtered_customers
+FROM filtered_customers
 ORDER BY customer_customer_id
 LIMIT COALESCE(:page_size, 25) OFFSET (COALESCE(:page, 1) - 1) * COALESCE(:page_size, 25);
  

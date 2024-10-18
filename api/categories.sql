@@ -31,6 +31,6 @@ WITH filtered_categories AS (
       AND (description ILIKE CONCAT('%', :category_description, '%') OR :category_description IS NULL)
 )
 SELECT *
-FROM databricks.filtered_categories
+FROM filtered_categories
 ORDER BY category_category_id
 LIMIT COALESCE(:page_size, 25) OFFSET (COALESCE(:page, 1) - 1) * COALESCE(:page_size, 25);

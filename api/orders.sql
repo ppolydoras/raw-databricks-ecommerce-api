@@ -53,6 +53,6 @@ WITH filtered_orders AS (
       AND (total_amount <= :order_total_amount_range_end OR :order_total_amount_range_end IS NULL)
 )
 SELECT *
-FROM databricks.filtered_orders
+FROM filtered_orders
 ORDER BY order_order_id
 LIMIT COALESCE(:page_size, 25) OFFSET (COALESCE(:page, 1) - 1) * COALESCE(:page_size, 25);

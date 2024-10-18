@@ -49,5 +49,5 @@ WITH inventory_with_details AS (
       AND (i.last_updated <= :inventory_last_updated_range_end OR :inventory_last_updated_range_end IS NULL)
 )
 SELECT *
-FROM databricks.inventory_with_details
+FROM inventory_with_details
 ORDER BY inventory_inventory_id;

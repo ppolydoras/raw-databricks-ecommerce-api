@@ -49,6 +49,6 @@ WITH filtered_products AS (
       AND (price <= :product_price_range_end OR :product_price_range_end IS NULL)
 )
 SELECT *
-FROM databricks.filtered_products
+FROM filtered_products
 ORDER BY product_product_id
 LIMIT COALESCE(:page_size, 25) OFFSET (COALESCE(:page, 1) - 1) * COALESCE(:page_size, 25);

@@ -25,6 +25,6 @@ SELECT
     cs.category_category_name,
     cs.category_total_sales,
     (cs.category_total_sales / ts.total_sales_amount) * 100 AS category_sales_percentage
-FROM databricks.category_sales cs
-CROSS JOIN databricks.total_sales ts
+FROM category_sales cs
+CROSS JOIN total_sales ts
 ORDER BY cs.category_total_sales DESC;

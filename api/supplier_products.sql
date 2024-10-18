@@ -35,5 +35,5 @@ WITH supplier_products AS (
       AND (c.category_name ILIKE CONCAT('%', :category_name, '%') OR :category_name IS NULL)
 )
 SELECT *
-FROM databricks.supplier_products
+FROM supplier_products
 ORDER BY supplier_supplier_id, product_product_id;
