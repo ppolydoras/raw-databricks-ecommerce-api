@@ -46,9 +46,9 @@ WITH order_items_with_details AS (
         p.category_id AS product_category_id,
         p.supplier_id AS product_supplier_id,
         p.price AS product_price
-    FROM order_items oi
-    JOIN orders o ON oi.order_id = o.order_id
-    JOIN products p ON oi.product_id = p.product_id
+    FROM databricks.order_items oi
+    JOIN databricks.orders o ON oi.order_id = o.order_id
+    JOIN databricks.products p ON oi.product_id = p.product_id
     WHERE (oi.order_id = :order_item_order_id OR :order_item_order_id IS NULL)
       AND (oi.product_id = :order_item_product_id OR :order_item_product_id IS NULL)
       AND (p.product_name ILIKE CONCAT('%', :product_name, '%') OR :product_name IS NULL)
@@ -57,6 +57,6 @@ WITH order_items_with_details AS (
       AND (o.status ILIKE :order_status OR :order_status IS NULL)
 )
 SELECT *
-FROM order_items_with_details
+FROM databricks.order_items_with_details
 ORDER BY order_item_order_item_id
 LIMIT COALESCE(:page_size, 25) OFFSET (COALESCE(:page, 1) - 1) * COALESCE(:page_size, 25);

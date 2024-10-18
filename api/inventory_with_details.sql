@@ -37,10 +37,10 @@ WITH inventory_with_details AS (
         p.product_name AS product_product_name,
         c.category_name AS category_category_name,
         s.supplier_name AS supplier_supplier_name
-    FROM inventory i
-    JOIN products p ON i.product_id = p.product_id
-    JOIN categories c ON p.category_id = c.category_id
-    JOIN suppliers s ON p.supplier_id = s.supplier_id
+    FROM databricks.inventory i
+    JOIN databricks.products p ON i.product_id = p.product_id
+    JOIN databricks.categories c ON p.category_id = c.category_id
+    JOIN databricks.suppliers s ON p.supplier_id = s.supplier_id
     WHERE (i.product_id = :inventory_product_id OR :inventory_product_id IS NULL)
       AND (p.product_name ILIKE CONCAT('%', :product_name, '%') OR :product_name IS NULL)
       AND (c.category_name ILIKE CONCAT('%', :category_name, '%') OR :category_name IS NULL)
@@ -50,5 +50,5 @@ WITH inventory_with_details AS (
       AND (i.last_updated <= :inventory_last_updated_range_end OR :inventory_last_updated_range_end IS NULL)
 )
 SELECT *
-FROM inventory_with_details
+FROM databricks.inventory_with_details
 ORDER BY inventory_inventory_id;

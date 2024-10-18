@@ -38,7 +38,7 @@ WITH filtered_inventory AS (
         product_id AS inventory_product_id,
         quantity_in_stock AS inventory_quantity_in_stock,
         last_updated AS inventory_last_updated
-    FROM inventory
+    FROM databricks.inventory
     WHERE (inventory_id = :inventory_id OR :inventory_id IS NULL)
       AND (product_id = :inventory_product_id OR :inventory_product_id IS NULL)
       AND (quantity_in_stock >= :inventory_quantity_in_stock_range_start OR :inventory_quantity_in_stock_range_start IS NULL)
@@ -47,6 +47,6 @@ WITH filtered_inventory AS (
       AND (last_updated <= :inventory_last_updated_range_end OR :inventory_last_updated_range_end IS NULL)
 )
 SELECT *
-FROM filtered_inventory
+FROM databricks.filtered_inventory
 ORDER BY inventory_inventory_id
 LIMIT COALESCE(:page_size, 25) OFFSET (COALESCE(:page, 1) - 1) * COALESCE(:page_size, 25);

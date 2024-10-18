@@ -43,7 +43,7 @@ WITH filtered_order_items AS (
         product_id AS order_item_product_id,
         quantity AS order_item_quantity,
         unit_price AS order_item_unit_price
-    FROM order_items
+    FROM databricks.order_items
     WHERE (order_item_id = :order_item_id OR :order_item_id IS NULL)
       AND (order_id = :order_item_order_id OR :order_item_order_id IS NULL)
       AND (product_id = :order_item_product_id OR :order_item_product_id IS NULL)
@@ -53,6 +53,6 @@ WITH filtered_order_items AS (
       AND (unit_price <= :order_item_unit_price_range_end OR :order_item_unit_price_range_end IS NULL)
 )
 SELECT *
-FROM filtered_order_items
+FROM databricks.filtered_order_items
 ORDER BY order_item_order_item_id
 LIMIT COALESCE(:page_size, 25) OFFSET (COALESCE(:page, 1) - 1) * COALESCE(:page_size, 25);

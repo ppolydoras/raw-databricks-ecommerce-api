@@ -40,7 +40,7 @@ WITH filtered_suppliers AS (
         contact_email AS supplier_contact_email,
         phone AS supplier_phone,
         address AS supplier_address
-    FROM suppliers
+    FROM databricks.suppliers
     WHERE (supplier_id = :supplier_id OR :supplier_id IS NULL)
       AND (supplier_name ILIKE CONCAT('%', :supplier_name, '%') OR :supplier_name IS NULL)
       AND (contact_name ILIKE CONCAT('%', :supplier_contact_name, '%') OR :supplier_contact_name IS NULL)
@@ -49,6 +49,6 @@ WITH filtered_suppliers AS (
       AND (address ILIKE CONCAT('%', :supplier_address, '%') OR :supplier_address IS NULL)
 )
 SELECT *
-FROM filtered_suppliers
+FROM databricks.filtered_suppliers
 ORDER BY supplier_supplier_id
 LIMIT COALESCE(:page_size, 25) OFFSET (COALESCE(:page, 1) - 1) * COALESCE(:page_size, 25);

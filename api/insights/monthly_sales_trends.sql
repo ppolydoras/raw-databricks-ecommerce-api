@@ -15,7 +15,7 @@
 SELECT
     DATE_TRUNC('month', order_date) AS sales_month,
     SUM(total_amount) AS sales_total_amount
-FROM orders
+FROM databricks.orders
 WHERE (DATE_PART('year', order_date) = :year OR :year IS NULL)
   AND (DATE_PART('month', order_date) >= :start_month OR :start_month IS NULL)
   AND (DATE_PART('month', order_date) <= :end_month OR :end_month IS NULL)

@@ -21,8 +21,8 @@ WITH sales_data AS (
         oi.product_id,
         SUM(oi.quantity) AS total_quantity_sold,
         COUNT(DISTINCT o.order_date) AS sales_days
-    FROM order_items oi
-    JOIN orders o ON oi.order_id = o.order_id
+    FROM databricks.order_items oi
+    JOIN databricks.orders o ON oi.order_id = o.order_id
     WHERE (oi.product_id = :product_id OR :product_id IS NULL)
       AND (o.order_date >= :sales_date_range_start OR :sales_date_range_start IS NULL)
       AND (o.order_date <= :sales_date_range_end OR :sales_date_range_end IS NULL)
@@ -32,14 +32,14 @@ average_daily_sales AS (
     SELECT
         sd.product_id,
         sd.total_quantity_sold / NULLIF(sd.sales_days, 0) AS avg_daily_sales
-    FROM sales_data sd
+    FROM databricks.sales_data sd
 ),
 inventory_levels AS (
     SELECT
         i.product_id,
         i.quantity_in_stock,
         i.last_updated
-    FROM inventory i
+    FROM databricks.inventory i
     WHERE (i.product_id = :product_id OR :product_id IS NULL)
 ),
 depletion_estimation AS (
@@ -53,11 +53,11 @@ depletion_estimation AS (
             WHEN al.avg_daily_sales > 0 THEN il.quantity_in_stock / al.avg_daily_sales
             ELSE NULL
         END AS estimated_days_until_depletion
-    FROM average_daily_sales al
-    JOIN inventory_levels il ON al.product_id = il.product_id
-    JOIN products p ON al.product_id = p.product_id
+    FROM databricks.average_daily_sales al
+    JOIN databricks.inventory_levels il ON al.product_id = il.product_id
+    JOIN databricks.products p ON al.product_id = p.product_id
     WHERE (p.product_name ILIKE CONCAT('%', :product_name, '%') OR :product_name IS NULL)
 )
 SELECT *
-FROM depletion_estimation
+FROM databricks.depletion_estimation
 ORDER BY estimated_days_until_depletion;

@@ -27,10 +27,10 @@ WITH product_sales_summaries AS (
         c.category_name AS category_category_name,
         SUM(oi.quantity) AS product_total_quantity_sold,
         SUM(oi.quantity * oi.unit_price) AS product_total_sales_amount
-    FROM products p
-    JOIN order_items oi ON p.product_id = oi.product_id
-    JOIN orders o ON oi.order_id = o.order_id
-    JOIN categories c ON p.category_id = c.category_id
+    FROM databricks.products p
+    JOIN databricks.order_items oi ON p.product_id = oi.product_id
+    JOIN databricks.orders o ON oi.order_id = o.order_id
+    JOIN databricks.categories c ON p.category_id = c.category_id
     WHERE (p.product_id = :product_id OR :product_id IS NULL)
       AND (p.product_name ILIKE CONCAT('%', :product_name, '%') OR :product_name IS NULL)
       AND (c.category_name ILIKE CONCAT('%', :category_name, '%') OR :category_name IS NULL)
@@ -39,5 +39,5 @@ WITH product_sales_summaries AS (
     GROUP BY p.product_id, p.product_name, c.category_name
 )
 SELECT *
-FROM product_sales_summaries
+FROM databricks.product_sales_summaries
 ORDER BY product_total_sales_amount DESC;

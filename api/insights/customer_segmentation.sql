@@ -26,8 +26,8 @@ WITH customer_totals AS (
         c.first_name,
         c.last_name,
         SUM(o.total_amount) AS total_spent
-    FROM customers c
-    JOIN orders o ON c.customer_id = o.customer_id
+    FROM databricks.customers c
+    JOIN databricks.orders o ON c.customer_id = o.customer_id
     WHERE (o.order_date >= :order_date_range_start OR :order_date_range_start IS NULL)
       AND (o.order_date <= :order_date_range_end OR :order_date_range_end IS NULL)
     GROUP BY c.customer_id, c.first_name, c.last_name
@@ -36,7 +36,7 @@ spending_stats AS (
     SELECT
         AVG(total_spent) AS avg_spent,
         STDDEV(total_spent) AS stddev_spent
-    FROM customer_totals
+    FROM databricks.customer_totals
 ),
 segmented_customers AS (
     SELECT
@@ -49,11 +49,11 @@ segmented_customers AS (
             WHEN ct.total_spent BETWEEN (ss.avg_spent - ss.stddev_spent) AND (ss.avg_spent + ss.stddev_spent) THEN 'medium_value'
             ELSE 'low_value'
         END AS customer_segment
-    FROM customer_totals ct
-    CROSS JOIN spending_stats ss
+    FROM databricks.customer_totals ct
+    CROSS JOIN databricks.spending_stats ss
 )
 SELECT *
-FROM segmented_customers
+FROM databricks.segmented_customers
 WHERE (customer_segment = :segment_type OR :segment_type IS NULL)
 ORDER BY customer_total_spent DESC
 LIMIT COALESCE(:page_size, 25) OFFSET (COALESCE(:page, 1) - 1) * COALESCE(:page_size, 25);

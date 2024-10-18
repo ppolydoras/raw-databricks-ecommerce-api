@@ -27,8 +27,8 @@ WITH customer_orders AS (
         c.last_name AS customer_last_name,
         o.order_date AS order_order_date,
         o.total_amount AS order_total_amount
-    FROM customers c
-    JOIN orders o ON c.customer_id = o.customer_id
+    FROM databricks.customers c
+    JOIN databricks.orders o ON c.customer_id = o.customer_id
     WHERE (c.customer_id = :customer_id OR :customer_id IS NULL)
       AND (c.first_name ILIKE CONCAT('%', :customer_first_name, '%') OR :customer_first_name IS NULL)
       AND (c.last_name ILIKE CONCAT('%', :customer_last_name, '%') OR :customer_last_name IS NULL)
@@ -43,7 +43,7 @@ customer_clv AS (
         AVG(co.order_total_amount) AS average_order_value,
         COUNT(DISTINCT co.order_order_date) / NULLIF(DATE_PART('year', MAX(co.order_order_date) - MIN(co.order_order_date)) + 1, 0) AS purchase_frequency_per_year,
         (AVG(co.order_total_amount) * (COUNT(co.order_order_date) / NULLIF(DATE_PART('year', MAX(co.order_order_date) - MIN(co.order_order_date)) + 1, 0))) AS customer_lifetime_value
-    FROM customer_orders co
+    FROM databricks.customer_orders co
     GROUP BY co.customer_customer_id, co.customer_first_name, co.customer_last_name
 )
 SELECT
@@ -53,5 +53,5 @@ SELECT
     average_order_value,
     purchase_frequency_per_year,
     customer_lifetime_value
-FROM customer_clv
+FROM databricks.customer_clv
 ORDER BY customer_lifetime_value DESC;

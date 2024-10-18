@@ -64,7 +64,7 @@ WITH filtered_customers AS (
         state AS customer_state,
         zip_code AS customer_zip_code,
         registration_date AS customer_registration_date
-    FROM customers
+    FROM databricks.customers
     WHERE (customer_id = :customer_id OR :customer_id IS NULL)
       AND (first_name ILIKE CONCAT('%', :customer_first_name, '%') OR :customer_first_name IS NULL)
       AND (last_name ILIKE CONCAT('%', :customer_last_name, '%') OR :customer_last_name IS NULL)
@@ -78,7 +78,7 @@ WITH filtered_customers AS (
       AND (registration_date <= :customer_registration_date_range_end OR :customer_registration_date_range_end IS NULL)
 )
 SELECT *
-FROM filtered_customers
+FROM databricks.filtered_customers
 ORDER BY customer_customer_id
 LIMIT COALESCE(:page_size, 25) OFFSET (COALESCE(:page, 1) - 1) * COALESCE(:page_size, 25);
  

@@ -45,9 +45,9 @@ WITH products_with_details AS (
         s.supplier_name AS supplier_supplier_name,
         s.contact_name AS supplier_contact_name,
         s.contact_email AS supplier_contact_email
-    FROM products p
-    JOIN categories c ON p.category_id = c.category_id
-    JOIN suppliers s ON p.supplier_id = s.supplier_id
+    FROM databricks.products p
+    JOIN databricks.categories c ON p.category_id = c.category_id
+    JOIN databricks.suppliers s ON p.supplier_id = s.supplier_id
     WHERE (p.product_id = :product_id OR :product_id IS NULL)
       AND (p.product_name ILIKE CONCAT('%', :product_name, '%') OR :product_name IS NULL)
       AND (c.category_name ILIKE CONCAT('%', :category_name, '%') OR :category_name IS NULL)
@@ -56,6 +56,6 @@ WITH products_with_details AS (
       AND (p.price <= :product_price_range_end OR :product_price_range_end IS NULL)
 )
 SELECT *
-FROM products_with_details
+FROM databricks.products_with_details
 ORDER BY product_product_id
 LIMIT COALESCE(:page_size, 25) OFFSET (COALESCE(:page, 1) - 1) * COALESCE(:page_size, 25);

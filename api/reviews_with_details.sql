@@ -51,9 +51,9 @@ WITH reviews_with_details AS (
         p.product_name AS product_product_name,
         c.first_name AS customer_first_name,
         c.last_name AS customer_last_name
-    FROM reviews r
-    JOIN products p ON r.product_id = p.product_id
-    JOIN customers c ON r.customer_id = c.customer_id
+    FROM databricks.reviews r
+    JOIN databricks.products p ON r.product_id = p.product_id
+    JOIN databricks.customers c ON r.customer_id = c.customer_id
     WHERE (r.product_id = :review_product_id OR :review_product_id IS NULL)
       AND (r.customer_id = :review_customer_id OR :review_customer_id IS NULL)
       AND (p.product_name ILIKE CONCAT('%', :product_name, '%') OR :product_name IS NULL)
@@ -64,6 +64,6 @@ WITH reviews_with_details AS (
       AND (r.review_date <= :review_date_range_end OR :review_date_range_end IS NULL)
 )
 SELECT *
-FROM reviews_with_details
+FROM databricks.reviews_with_details
 ORDER BY review_review_id
 LIMIT COALESCE(:page_size, 25) OFFSET (COALESCE(:page, 1) - 1) * COALESCE(:page_size, 25);

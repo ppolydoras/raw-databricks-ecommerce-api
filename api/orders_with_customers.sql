@@ -60,8 +60,8 @@ WITH orders_with_customers AS (
         c.state AS customer_state,
         c.zip_code AS customer_zip_code,
         c.registration_date AS customer_registration_date
-    FROM orders o
-    JOIN customers c ON o.customer_id = c.customer_id
+    FROM databricks.orders o
+    JOIN databricks.customers c ON o.customer_id = c.customer_id
     WHERE (o.order_id = :order_id OR :order_id IS NULL)
       AND (o.customer_id = :order_customer_id OR :order_customer_id IS NULL)
       AND (c.first_name ILIKE CONCAT('%', :customer_first_name, '%') OR :customer_first_name IS NULL)
@@ -73,6 +73,6 @@ WITH orders_with_customers AS (
       AND (o.total_amount <= :order_total_amount_range_end OR :order_total_amount_range_end IS NULL)
 )
 SELECT *
-FROM orders_with_customers
+FROM databricks.orders_with_customers
 ORDER BY order_order_id
 LIMIT COALESCE(:page_size, 25) OFFSET (COALESCE(:page, 1) - 1) * COALESCE(:page_size, 25);

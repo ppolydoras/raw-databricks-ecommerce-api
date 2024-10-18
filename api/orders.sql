@@ -43,7 +43,7 @@ WITH filtered_orders AS (
         order_date AS order_order_date,
         status AS order_status,
         total_amount AS order_total_amount
-    FROM orders
+    FROM databricks.orders
     WHERE (order_id = :order_id OR :order_id IS NULL)
       AND (customer_id = :order_customer_id OR :order_customer_id IS NULL)
       AND (status ILIKE :order_status OR :order_status IS NULL)
@@ -53,6 +53,6 @@ WITH filtered_orders AS (
       AND (total_amount <= :order_total_amount_range_end OR :order_total_amount_range_end IS NULL)
 )
 SELECT *
-FROM filtered_orders
+FROM databricks.filtered_orders
 ORDER BY order_order_id
 LIMIT COALESCE(:page_size, 25) OFFSET (COALESCE(:page, 1) - 1) * COALESCE(:page_size, 25);

@@ -39,8 +39,8 @@ WITH customer_totals AS (
         c.last_name AS customer_last_name,
         c.email AS customer_email,
         SUM(o.total_amount) AS customer_total_spent
-    FROM customers c
-    JOIN orders o ON c.customer_id = o.customer_id
+    FROM databricks.customers c
+    JOIN databricks.orders o ON c.customer_id = o.customer_id
     WHERE (c.first_name ILIKE CONCAT('%', :customer_first_name, '%') OR :customer_first_name IS NULL)
       AND (c.last_name ILIKE CONCAT('%', :customer_last_name, '%') OR :customer_last_name IS NULL)
       AND (o.order_date >= :order_date_range_start OR :order_date_range_start IS NULL)
@@ -56,6 +56,6 @@ SELECT
     customer_email,
     customer_total_spent,
     RANK() OVER (ORDER BY customer_total_spent DESC) AS customer_rank
-FROM customer_totals
+FROM databricks.customer_totals
 ORDER BY customer_rank
 LIMIT COALESCE(:page_size, 25) OFFSET (COALESCE(:page, 1) - 1) * COALESCE(:page_size, 25);

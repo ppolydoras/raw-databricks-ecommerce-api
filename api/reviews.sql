@@ -40,7 +40,7 @@ WITH filtered_reviews AS (
         rating AS review_rating,
         review_text AS review_review_text,
         review_date AS review_review_date
-    FROM reviews
+    FROM databricks.reviews
     WHERE (review_id = :review_id OR :review_id IS NULL)
       AND (product_id = :review_product_id OR :review_product_id IS NULL)
       AND (customer_id = :review_customer_id OR :review_customer_id IS NULL)
@@ -49,6 +49,6 @@ WITH filtered_reviews AS (
       AND (review_date <= :review_date_range_end OR :review_date_range_end IS NULL)
 )
 SELECT *
-FROM filtered_reviews
+FROM databricks.filtered_reviews
 ORDER BY review_review_id
 LIMIT COALESCE(:page_size, 25) OFFSET (COALESCE(:page, 1) - 1) * COALESCE(:page_size, 25);

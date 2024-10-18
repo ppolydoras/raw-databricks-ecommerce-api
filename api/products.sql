@@ -40,7 +40,7 @@ WITH filtered_products AS (
         supplier_id AS product_supplier_id,
         price AS product_price,
         description AS product_description
-    FROM products
+    FROM databricks.products
     WHERE (product_id = :product_id OR :product_id IS NULL)
       AND (product_name ILIKE CONCAT('%', :product_name, '%') OR :product_name IS NULL)
       AND (category_id = :product_category_id OR :product_category_id IS NULL)
@@ -49,6 +49,6 @@ WITH filtered_products AS (
       AND (price <= :product_price_range_end OR :product_price_range_end IS NULL)
 )
 SELECT *
-FROM filtered_products
+FROM databricks.filtered_products
 ORDER BY product_product_id
 LIMIT COALESCE(:page_size, 25) OFFSET (COALESCE(:page, 1) - 1) * COALESCE(:page_size, 25);

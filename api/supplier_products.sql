@@ -26,14 +26,14 @@ WITH supplier_products AS (
         p.product_name AS product_product_name,
         p.price AS product_price,
         c.category_name AS category_category_name
-    FROM suppliers s
-    JOIN products p ON s.supplier_id = p.supplier_id
-    JOIN categories c ON p.category_id = c.category_id
+    FROM databricks.suppliers s
+    JOIN databricks.products p ON s.supplier_id = p.supplier_id
+    JOIN databricks.categories c ON p.category_id = c.category_id
     WHERE (s.supplier_id = :supplier_id OR :supplier_id IS NULL)
       AND (s.supplier_name ILIKE CONCAT('%', :supplier_name, '%') OR :supplier_name IS NULL)
       AND (p.product_name ILIKE CONCAT('%', :product_name, '%') OR :product_name IS NULL)
       AND (c.category_name ILIKE CONCAT('%', :category_name, '%') OR :category_name IS NULL)
 )
 SELECT *
-FROM supplier_products
+FROM databricks.supplier_products
 ORDER BY supplier_supplier_id, product_product_id;

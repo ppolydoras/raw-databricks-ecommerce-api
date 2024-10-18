@@ -27,8 +27,8 @@ WITH customer_order_summaries AS (
         c.last_name AS customer_last_name,
         COUNT(o.order_id) AS customer_total_orders,
         SUM(o.total_amount) AS customer_total_spent
-    FROM customers c
-    LEFT JOIN orders o ON c.customer_id = o.customer_id
+    FROM databricks.customers c
+    LEFT JOIN databricks.orders o ON c.customer_id = o.customer_id
         AND (o.order_date >= :order_date_range_start OR :order_date_range_start IS NULL)
         AND (o.order_date <= :order_date_range_end OR :order_date_range_end IS NULL)
     WHERE (c.customer_id = :customer_id OR :customer_id IS NULL)
@@ -37,5 +37,5 @@ WITH customer_order_summaries AS (
     GROUP BY c.customer_id, c.first_name, c.last_name
 )
 SELECT *
-FROM customer_order_summaries
+FROM databricks.customer_order_summaries
 ORDER BY customer_total_spent DESC;
