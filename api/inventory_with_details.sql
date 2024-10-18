@@ -27,7 +27,6 @@
 -- @default inventory_last_updated_range_end null
 
 -- @return A list of inventory records with product details matching the specified filters.
-
 WITH inventory_with_details AS (
     SELECT
         i.inventory_id AS inventory_inventory_id,
