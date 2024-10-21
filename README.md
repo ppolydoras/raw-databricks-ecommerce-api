@@ -37,6 +37,7 @@ This repository provides an **E-commerce API template** for integrating data fro
 
 The RAW Labs platform allows you to create APIs by writing SQL queries that can access data from various data sources, including Databricks. Under the hood, RAW Labs uses a Data Access Service (DAS) architecture to connect to numerous origin servers and data sources, enabling seamless, real-time data retrieval without the need for data replication. This API template demonstrates how RAW Labs can interact with a Databricks database, which is a scalable data platform where you can store and manage any type of data.
 
+
 ### Features
 
 - **Real-Time Data Access**: Query e-commerce data in real-time without data replication.
